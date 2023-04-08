@@ -1,0 +1,92 @@
+{% extends 'teacher/index.html' %}
+{% block content %}
+
+<main id="main">
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+            {% if new_parent_count != 0%}
+            <div class="section-header mt-5">
+                <h3>Newly Registered Parents </h3>
+            </div>
+
+            <div class="col-lg-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Parent Name</th>
+                            <th>Phone Number</th>
+
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for t in new_parents %}
+                        <tr>
+                            <td>{{t.parent.first_name}}</td>
+                            <td>{{t.Phone_Number}}</td>
+
+                            <td>
+                                <form action="{% url 'assignStudentParent' t.id %}" class="d-flex align-items-center"
+                                    method="post">
+                                    {% csrf_token %}
+                                    <select name="studentId" id="" class="form-control" required>
+                                        <option value="">Select student of the Parent</option>
+                                        {% for i in students %}
+                                        <option value="{{i.id}}">{{i.user.username}}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <button class="btn btn-primary mx-3">Assign and confirm parent
+                                    </button>
+                                    <a href="{% url 'deleteParent' t.parent.id %}" class="btn btn-danger"
+                                        onclick="return confirm('Confirm Delete ? ')">Delete Parent</a>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+            <div class="section-header mt-5 pt-5">
+                <h3>All Parents List</h3>
+            </div>
+            <div class="row gx-lg-0 gy-4">
+
+                <div class="col-lg-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Parent Name</th>
+                                <th>Phone Number</th>
+                                <th>Student </th>
+                                <th>Department</th>
+                                <th>Semester</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for t in parents %}
+                            {% if t.student != None %}
+                            <tr>
+                                <td>{{t.parent.first_name}}</td>
+                                <td>{{t.Phone_Number}}</td>
+                                <td>{{t.student.user.first_name}}</td>
+                                <td>{{t.student.Department}}</td>
+                                <td>{{t.student.Semester}}</td>
+
+                                <td>
+                                    <a href="{% url 'deleteParent' t.parent.id %}" class="btn btn-danger"
+                                        onclick="return confirm('Confirm Delete ? ')">Delete Parent</a>
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

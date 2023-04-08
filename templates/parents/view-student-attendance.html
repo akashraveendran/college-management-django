@@ -1,0 +1,44 @@
+{% extends 'parents/index.html' %}
+{% block content %}
+
+<main id="main">
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header mt-5 pt-5">
+                <h3 class="text-uppercase">{{student.user.first_name}} : <span class="text-muted">Attendance Details
+                    </span></h3>
+            </div>
+            <div class="section-header mt-5 text-end">
+                <h6 class="text-start text-muted">Total Attendance <span class="fw-bold">{{a_count}}</span> days</h6>
+            </div>
+            <div class="row gx-lg-0 gy-1">
+                <div class="col-lg-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Date </th>
+                                <th>Attendance </th>
+                                <th> Attendance taken on</th>
+                                <th> Attendance added by</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for a in attendances %}
+                            <tr>
+                                <td>{{a.Attendance_Date}}</td>
+                                <td>{{a.attendance}}</td>
+                                <td>{{a.date_taken}}</td>
+                                <td>{{a.teacher.user.first_name}}</td>
+
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

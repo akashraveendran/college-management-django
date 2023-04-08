@@ -1,0 +1,50 @@
+{% extends 'teacher/index.html' %}
+{% block content %}
+
+<main id="main">
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header mt-5">
+                <h3>Notice Board</h3>
+            </div>
+
+            <div class="row gx-lg-0 gy-4">
+                <div class="col-lg-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Title</th>
+                                <th>Content</th>
+                                <th>Uploaded on</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for t in noticeboard_list %}
+                            <tr>
+                                <td>{{t.Category}}</td>
+                                <td>{{t.Title}}</td>
+                                <td>{{t.Content}}</td>
+                                <td>{{t.uploaded_date}}</td>
+                                {% if t.Status == False %}
+
+                                <td><a href="{% url 'approveArticle' t.id %}"
+                                        onclick="return confirm('Confirm approve this article')"
+                                        class="btn btn-success">Approve</a></td>
+                                {% else %}
+                                <td><a href="{% url 'rejectArticle' t.id %}"
+                                        onclick="return confirm('Confirm reject this article')"
+                                        class="btn btn-danger">Reject</a></td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

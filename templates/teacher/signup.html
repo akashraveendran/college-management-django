@@ -1,0 +1,47 @@
+{% extends 'index.html' %}
+{% block content %}
+
+<style>
+    .form-group select {
+        width: 100%;
+        border: 1px solid rgb(173, 173, 173);
+        padding: 5px 10px;
+    }
+</style>
+<main id="main">
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header mt-5">
+                <h3>Register As Teacher</h3>
+            </div>
+            <div class="row gx-lg-0 gy-4">
+                <div class="col-lg-2">
+                </div>
+                <div class="col-lg-8">
+                    <form method="post" class="php-email-form" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {% for fields in form %}
+                        <div class="form-group mt-3">
+                            {{fields}}
+                        </div>
+                        {% endfor %}
+                        <h3 class="mt-4 text-muted">Your Profile Details</h3>
+                        <div class="row">
+                            {% for fields in teacher_form %}
+                            <div class="col-6">
+                                <div class="form-group mt-3">
+                                    <label class="mb-2" for="">{{fields.label}}</label>
+                                    {{fields}}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        <div class="text-center mt-3"><button type="submit">Register As a Teacher</button></div>
+                        <p class="text-end mt-4"><a href="{% url 'teacherSignIn' %}">Signin As Teacher</a></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+{% endblock %}

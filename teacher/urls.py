@@ -1,0 +1,30 @@
+from django.urls import path 
+from .import views
+
+urlpatterns = [
+    path("",views.teacherIndex,name="teacherIndex"),
+    path("viewDepartmentStudents",views.viewDepartmentStudents,name="viewDepartmentStudents"),
+    path("deleteStudent/<int:id>",views.deleteStudent,name="deleteStudent"),
+    path("viewWorks",views.viewWorks,name="viewWorks"),
+    path("addWork",views.addWork,name="addWork"),
+    path("deleteWork/<int:id>",views.deleteWork,name="deleteWork"),
+    path("viewWorkMark/<int:id>",views.viewWorkMark,name="viewWorkMark"),
+    path("addmark/<int:id>",views.addmark,name="addmark"),
+    path("addSemesterResult",views.addSemesterResult,name="addSemesterResult"),
+    path("viewSemResults",views.viewSemResults,name="viewSemResults"),
+    path("deleteSemResult/<int:id>",views.deleteSemResult,name="deleteSemResult"),
+    path("viewTimeTable",views.viewTimeTable,name="viewTimeTable"),
+    path("addTimeTable",views.addTimeTable,name="addTimeTable"),
+    path("deletetable/<int:id>",views.deletetable,name="deletetable"),
+    path("viewAttendance/<int:s_id>",views.viewAttendance,name="viewAttendance"),
+    path("addAttendance/<int:s_id>",views.addAttendance,name="addAttendance"),
+    path("deleteAttendance/<int:id>",views.deleteAttendance,name="deleteAttendance"),
+    path("viewNewsAndInfo",views.viewNewsAndInfo,name="viewNewsAndInfo"),
+    path("viewTeacherNoticeBoard",views.viewTeacherNoticeBoard,name="viewTeacherNoticeBoard"),
+    path("approveArticle/<int:id>",views.approveArticle,name="approveArticle"),
+    path("rejectArticle/<int:id>",views.rejectArticle,name="rejectArticle"),
+    path("viewTeacherNews",views.viewTeacherNews,name="viewTeacherNews"),
+    path("viewParents",views.viewParents,name="viewParents"),
+    path("assignStudentParent/<int:p_id>",views.assignStudentParent,name="assignStudentParent"),
+    path("deleteParent/<int:p_id>",views.deleteParent,name="deleteParent"),
+]

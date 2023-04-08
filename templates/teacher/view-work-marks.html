@@ -1,0 +1,62 @@
+{% extends 'teacher/index.html' %}
+{% block content %}
+
+<main id="main">
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header mt-5 pt-5">
+                <h3><span class="text-muted">{{work.work_type}} </span> : {{work.work_title}}</h3>
+            </div>
+            <div class="section-header mt-5 text-end">
+
+            </div>
+            <div class="row gx-lg-0 gy-2">
+                <div class="col-lg-7">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Semester</th>
+                                <th>Department</th>
+                                <th>Assigned Mark</th>
+                                <th>Total Marks</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for w in marks %}
+                            <tr>
+                                <td>{{w.student.user.first_name}}</td>
+                                <td>{{w.student.Semester}}</td>
+                                <td>{{w.work.Department}}</td>
+                                <td>{{w.mark}}</td>
+                                <td>{{w.work.total_mark}}</td>
+
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-1"></div>
+                <div class="col-lg-4 p-2">
+                    <form action="{% url 'addmark' work.id %}" method="post" class="shadow px-4 py-5">
+                        <h4 class="text-muted">Add Mark to student</h4>
+                        {% csrf_token %}
+                        <select name="studentID" id="" required class="form-control">
+                            <option value="">Select the Student</option>
+                            {% for s in students %}
+                            <option value="{{s.id}}">{{s.user.first_name}}</option>
+                            {% endfor %}
+                        </select>
+                        <input type="number" name="mark" class="form-control my-3" placeholder="Enter the mark"
+                            required>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary">submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

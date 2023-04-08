@@ -1,0 +1,51 @@
+{% extends 'parents/index.html' %}
+{% block content %}
+
+<main id="main">
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header mt-5">
+                <h3> ID Card of {{student.user.first_name}}</h3>
+            </div>
+            <div class="row gx-lg-0 gy-4">
+                <div class="col-lg-2"></div>
+                <style>
+                    .shadow {
+                        background: linear-gradient(to right, rgb(222, 222, 255), rgb(187, 255, 187));
+                    }
+                </style>
+                <div class="col-lg-8 shadow py-3 px-2 rounded">
+                    <h2 class="text-center fw-bold">SSM Polytechnic College</h2>
+                    <div class=" d-flex justify-content-around ">
+                        <div class="left">
+                            <img src="{{student.Profile_Image.url}}" class="rounded" width="300px" alt="">
+                            <p class="text-muted d-flex justify-content-between mt-5">Name
+                                <span class="fw-bold text-uppercase">{{student.user.first_name}}</span>
+                            </p>
+                            <p class="text-muted d-flex justify-content-between">Register No. <span
+                                    class="text-uppercase fw-bold">{{student.Register_Number}}</span></p>
+                        </div>
+                        <div class="right">
+                            <p class="text-muted d-flex justify-content-between">Semester <span
+                                    class="text-uppercase fw-bold">{{student.Semester}}</span>
+                            </p>
+                            <p class="text-muted d-flex justify-content-between">Department <span
+                                    class="text-uppercase fw-bold">{{student.Department}}</span></p>
+                            <p class="text-muted d-flex justify-content-between">Blood Group <span
+                                    class="text-uppercase fw-bold">{{student.Blood_Group}}</span></p>
+                            <p class="text-muted d-flex justify-content-between">Address <span
+                                    class="text-uppercase fw-bold">{{student.Address}}</span>
+                            </p>
+                            <p class="text-muted d-flex justify-content-between">Date_of_birth <span
+                                    class="text-uppercase fw-bold">{{student.Date_of_birth}}</span></p>
+                            <p class="text-muted d-flex justify-content-between">Contact No. <span
+                                    class="text-uppercase fw-bold">{{student.Phone_Number}}</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

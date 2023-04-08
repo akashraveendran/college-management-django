@@ -1,0 +1,64 @@
+{% extends 'admin/index.html' %}
+{% block content %}
+
+<main id="main">
+    <style>
+        .table th {
+            background: rgb(20, 72, 141);
+            color: white;
+            text-align: center;
+            padding: 5px 10px;
+        }
+
+        .table td {
+            text-align: center;
+        }
+
+        #contact {
+            min-height: 90vh;
+        }
+    </style>
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header mt-5">
+                <h3 class="mt-5"> Teachers List</h3>
+            </div>
+            <div class="row gx-lg-0 gy-4">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Department</th>
+                                <th>Designation</th>
+                                <th>Phone Number</th>
+                                <th>Email</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for t in teachers %}
+                            <tr>
+                                <td>{{t.user.first_name}}</td>
+                                <td>{{t.Department}}</td>
+                                <td>{{t.Designation}}</td>
+                                <td>{{t.Phone_Number}}</td>
+                                <td>{{t.user.email}}</td>
+                                {% if t.user.is_active != True %}
+                                <td><a href="{% url 'approveTeacher' t.user.id %}" class="btn btn-success">Approve</a>
+                                </td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

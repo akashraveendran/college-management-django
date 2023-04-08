@@ -1,0 +1,69 @@
+{% extends 'teacher/index.html' %}
+{% block content %}
+
+<main id="main">
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header mt-5 pt-5">
+                <h3><span class="text-muted">View Semester Results</h3>
+            </div>
+            <div class="section-header mt-5 text-end">
+
+            </div>
+            <div class="row gx-lg-0 gy-1">
+                <div class="col-lg-6">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Department</th>
+                                <th>Semester</th>
+                                <th> </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for s in sem_results %}
+                            <tr>
+                                <td>{{s.Department}}</td>
+                                <td>{{s.Semester}}</td>
+                                <td class="d-flex"><a href="{{s.Semester_Result.url}}" class="btn btn-success me-2"
+                                        target="_blank">View</a>
+                                    <a href="{% url 'deleteSemResult' s.id %}"
+                                        onclick="return confirm('confirm delete ?')" class="btn btn-danger">Delete</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <style>
+                    .d-flex select,
+                    input {
+                        width: 60%;
+                        padding: 5px 10px;
+                        margin-top: 5px;
+                        border-color: rgb(197, 197, 197);
+                    }
+                </style>
+                <div class="col-lg-6 p-2">
+                    <form action="{% url 'addSemesterResult'%}" method="post" class="shadow px-4 py-5"
+                        enctype="multipart/form-data">
+                        <h4 class="text-muted">Upload Semester Result </h4>
+                        {% csrf_token %}
+                        {% for s in sem_result_form %}
+                        <div class="d-flex justify-content-between">
+                            <label for="">{{s.label}}</label>
+                            {{s}}
+                        </div>
+                        {% endfor %}
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary w-100 mt-5">submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

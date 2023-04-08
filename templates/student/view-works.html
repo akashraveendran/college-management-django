@@ -1,0 +1,42 @@
+{% extends 'student/index.html' %}
+{% block content %}
+
+<main id="main">
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header mt-5">
+                <h3>Latest Academic Works</h3>
+            </div>
+            <div class="row gx-lg-0 gy-4">
+                <div class="col-lg-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Work Type</th>
+                                <th>Total Mark </th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for w in works %}
+                            <tr>
+                                <td>{{w.work_title}}</td>
+                                <td>{{w.work_type}}</td>
+                                <td>{{w.total_mark}}</td>
+
+                                <td>
+                                    <a href="{% url 'viewStudentWorkMark' w.id %}" class="btn btn-success">view marklist
+                                    </a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

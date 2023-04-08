@@ -1,0 +1,53 @@
+{% extends 'teacher/index.html' %}
+{% block content %}
+
+<main id="main">
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header mt-5">
+                <h3> New informations & News</h3>
+            </div>
+            <div class="section-header mt-5 text-end">
+                <a href="{% url 'AddStudent' %}" class="btn btn-primary">Add New Student</a>
+            </div>
+            <div class="row gx-lg-0 gy-4">
+
+                <div class="col-lg-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Department</th>
+                                <th>Semester</th>
+                                <th>Phone Number</th>
+                                <th>Email</th>
+                                <th>Image</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for t in students %}
+                            <tr>
+                                <td>{{t.user.first_name}}</td>
+                                <td>{{t.Department}}</td>
+                                <td>{{t.Semester}}</td>
+                                <td>{{t.Phone_Number}}</td>
+                                <td>{{t.user.email}}</td>
+                                <td><img src="{{t.Profile_Image.url}}" alt="" width="100px"></td>
+                                <td>
+                                    <a href="{% url 'viewAttendance' t.id %}" class="btn btn-primary">view
+                                        Attendance</a>
+                                    <a href="{% url 'deleteStudent' t.user.id %}" class="btn btn-danger"
+                                        onclick="return confirm('Confirm Delete ? ')">Delete</a>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

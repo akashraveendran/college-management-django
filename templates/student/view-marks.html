@@ -1,0 +1,51 @@
+{% extends 'student/index.html' %}
+{% block content %}
+
+<main id="main">
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header mt-5 pt-5">
+                <h3><span class="text-muted">{{work.work_type}} </span> : {{work.work_title}}</h3>
+            </div>
+            <div class="section-header mt-5 text-center">
+                <h4 class="text-muted">Mark List</h4>
+            </div>
+            <div class="row gx-lg-0 gy-2">
+                <div class="col-lg-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Semester</th>
+                                <th>Department</th>
+                                <th>Assigned Mark</th>
+                                <th>Total Marks</th>
+                                <th>Teacher</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for w in marks %}
+                            <tr>
+                                {% if w.student.user == request.user %}
+                                <td class="text-success fw-bold">YOU</td>
+                                {% else %}
+
+                                <td>{{w.student.user.first_name}}</td>
+                                {% endif %}
+                                <td>{{w.student.Semester}}</td>
+                                <td>{{w.work.Department}}</td>
+                                <td>{{w.mark}}</td>
+                                <td>{{w.work.total_mark}}</td>
+                                <td>{{w.work.teacher.user.first_name}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

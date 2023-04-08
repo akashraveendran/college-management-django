@@ -1,0 +1,44 @@
+{% extends 'parents/index.html' %}
+{% block content %}
+
+<main id="main">
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header mt-5 pt-5">
+                <h3>MarkList of <span class="text-muted">{{student.user.username}} </span> </h3>
+            </div>
+            <div class="section-header mt-5 text-center">
+                <h4 class="text-muted">Mark List</h4>
+            </div>
+            <div class="row gx-lg-0 gy-2">
+                <div class="col-lg-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Work</th>
+                                <th>Work Type</th>
+                                <th>Assigned Mark</th>
+                                <th>Total Marks</th>
+                                <th>Teacher</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for w in marks %}
+                            <tr>
+                                <td>{{w.work.work_title}}</td>
+                                <td class="fw-bold text-primary">{{w.work.work_type}}</td>
+                                <td class="fw-bold text-success">{{w.mark}}</td>
+                                <td>{{w.work.total_mark}}</td>
+                                <td>{{w.work.teacher.user.first_name}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

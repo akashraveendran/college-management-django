@@ -1,0 +1,46 @@
+{% extends 'student/index.html' %}
+{% block content %}
+
+<main id="main">
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header mt-5">
+                <h3>Timetables List</h3>
+            </div>
+
+            <div class="row gx-lg-0 gy-4">
+                <div class="col-lg-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Description</th>
+                                <th>Uploaded on</th>
+                                <th>Department</th>
+                                <th>Semester</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for t in timetables %}
+                            <tr>
+                                <td>{{t.Description}}</td>
+                                <td>{{t.Date_assigned}}</td>
+                                <td>{{t.Department}}</td>
+                                <td>{{t.Semester}}</td>
+                                <td>
+                                    <a href="{{t.timetable.url}}" class="btn btn-success" download>Download Timetable
+                                    </a>
+
+
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

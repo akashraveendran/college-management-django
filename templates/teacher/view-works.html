@@ -1,0 +1,54 @@
+{% extends 'teacher/index.html' %}
+{% block content %}
+
+<main id="main">
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header mt-5">
+                <h3>Your Academic Works</h3>
+            </div>
+            <div class="section-header mt-5 text-end">
+                <a href="{% url 'addWork' %}" class="btn btn-primary">Add New Academic Work</a>
+            </div>
+            <div class="row gx-lg-0 gy-4">
+
+                <div class="col-lg-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Title</th>
+                                <th>Work Type</th>
+                                <th>Total Mark </th>
+                                <th>Department</th>
+                                <th>Semester</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for w in works %}
+                            <tr>
+                                <td>{{w.work_title}}</td>
+                                <td>{{w.work_type}}</td>
+                                <td>{{w.total_mark}}</td>
+                                <td>{{w.Department}}</td>
+                                <td>{{w.Semester}}</td>
+                                <td>
+                                    <a href="{% url 'deleteWork' w.id %}" class="btn btn-outline-danger"
+                                        onclick="return confirm('Are you sure you want to delete this work ?')">Delete
+                                        Work
+                                    </a>
+                                    <a href="{% url 'viewWorkMark' w.id %}" class="btn btn-success">view marklist </a>
+                                    <!-- <a href="{% url 'deleteStudent' w.id %}" class="btn btn-danger"
+                                        onclick="return confirm('Confirm Delete ? ')">Delete</a> -->
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

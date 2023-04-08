@@ -1,0 +1,48 @@
+{% extends 'student/index.html' %}
+{% block content %}
+
+<main id="main">
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header mt-5">
+                <h3>Notice Board</h3>
+            </div>
+            <div class="section-header mt-5 text-end">
+                <a href="{% url 'addNewNotice' %}" class="btn btn-primary">Upload to Noticeboard</a>
+            </div>
+            <div class="row gx-lg-0 gy-4">
+                <div class="col-lg-12">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Title</th>
+                                <th>Content</th>
+                                <th>Uploaded on</th>
+                                <th>Uploaded by </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for t in noticeboard_list %}
+                            <tr>
+                                <td>{{t.Category}}</td>
+                                <td>{{t.Title}}</td>
+                                <td>{{t.Content}}</td>
+                                <td>{{t.uploaded_date}}</td>
+                                {% if t.student.user == request.user %}
+
+                                <td><span class="fw-bold text-success">YOU</span></td>
+                                {% else %}
+                                <td>{{t.student.user.first_name}}</td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}

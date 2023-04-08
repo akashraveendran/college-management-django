@@ -1,0 +1,220 @@
+{% extends 'admin/index.html' %}
+{% block content %}
+
+<main id="main">
+    <style>
+        .table th {
+            background: rgb(20, 72, 141);
+            color: white;
+            text-align: center;
+            padding: 5px 10px;
+        }
+
+        .table td {
+            text-align: center;
+        }
+
+        #contact {
+            min-height: 90vh;
+        }
+    </style>
+    <section id="contact" class="contact">
+        <div class="container" data-aos="fade-up">
+            <div class="section-header mt-5">
+                <h3 class="mt-5"> Parents List</h3>
+            </div>
+            <div class="mt-3">
+                <h5 class="text-start">Department : Computer Engineering</h5>
+            </div>
+            <div class="row gx-lg-0 gy-4">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Department</th>
+                                <th>Semester</th>
+                                <th>Phone Number</th>
+                                <th>Email</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for t in parents %}
+                            {% if t.Department == "Computer Science Engineerning" %}
+                            <tr>
+                                <td>{{t.parent.first_name}}</td>
+                                <td>{{t.Phone_Number}}</td>
+                                <td>{{t.student.user.first_name}}</td>
+                                <td>{{t.Department}}</td>
+                                <td>{{t.student.Semester}}</td>
+                                <td><a href="{% url 'adminRemoveParent' t.id %}"
+                                        onclick="return confirm('Remove Parent ?')" class="btn btn-danger">Remove</a>
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="mt-3">
+                <h5 class="text-start">Department : Electronics Engineering</h5>
+            </div>
+            <div class="row gx-lg-0 gy-4">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Department</th>
+                                <th>Semester</th>
+                                <th>Phone Number</th>
+                                <th>Email</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for t in parents %}
+                            {% if t.Department == "Electronics Engineerning" %}
+                            <tr>
+                                <td>{{t.parent.first_name}}</td>
+                                <td>{{t.Phone_Number}}</td>
+                                <td>{{t.student.user.first_name}}</td>
+                                <td>{{t.Department}}</td>
+                                <td>{{t.student.Semester}}</td>
+                                <td><a href="{% url 'adminRemoveParent' t.id %}"
+                                        onclick="return confirm('Remove Parent ?')" class="btn btn-danger">Remove</a>
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="mt-3">
+                <h5 class="text-start">Department : Civil Engineerning</h5>
+            </div>
+            <div class="row gx-lg-0 gy-4">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Department</th>
+                                <th>Semester</th>
+                                <th>Phone Number</th>
+                                <th>Email</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for t in parents %}
+                            {% if t.Department == "Civil Engineerning" %}
+                            <tr>
+                                <td>{{t.parent.first_name}}</td>
+                                <td>{{t.Phone_Number}}</td>
+                                <td>{{t.student.user.first_name}}</td>
+                                <td>{{t.Department}}</td>
+                                <td>{{t.student.Semester}}</td>
+                                <td><a href="{% url 'adminRemoveParent' t.id %}"
+                                        onclick="return confirm('Remove Parent ?')" class="btn btn-danger">Remove</a>
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="mt-3">
+                <h5 class="text-start">Department : Mechanical Engineerning</h5>
+            </div>
+            <div class="row gx-lg-0 gy-4">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Department</th>
+                                <th>Semester</th>
+                                <th>Phone Number</th>
+                                <th>Email</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for t in parents %}
+                            {% if t.Department == "Mechanical Engineerning" %}
+                            <tr>
+                                <td>{{t.parent.first_name}}</td>
+                                <td>{{t.Phone_Number}}</td>
+                                <td>{{t.student.user.first_name}}</td>
+                                <td>{{t.Department}}</td>
+                                <td>{{t.student.Semester}}</td>
+                                <td><a href="{% url 'adminRemoveParent' t.id %}"
+                                        onclick="return confirm('Remove Parent ?')" class="btn btn-danger">Remove</a>
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="mt-3">
+                <h5 class="text-start">Department : Electrical Engineering</h5>
+            </div>
+            <div class="row gx-lg-0 gy-4">
+                <div class="col-lg-1">
+                </div>
+                <div class="col-lg-10">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Department</th>
+                                <th>Semester</th>
+                                <th>Phone Number</th>
+                                <th>Email</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for t in parents %}
+                            {% if t.Department == "Electrical Engineerning" %}
+                            <tr>
+                                <td>{{t.parent.first_name}}</td>
+                                <td>{{t.Phone_Number}}</td>
+                                <td>{{t.student.user.first_name}}</td>
+                                <td>{{t.Department}}</td>
+                                <td>{{t.student.Semester}}</td>
+                                <td><a href="{% url 'adminRemoveParent' t.id %}"
+                                        onclick="return confirm('Remove Parent ?')" class="btn btn-danger">Remove</a>
+                                </td>
+                            </tr>
+                            {% endif %}
+                            {% endfor %}
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+
+{% endblock %}
