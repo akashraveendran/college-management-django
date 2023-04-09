@@ -39,6 +39,12 @@ def approveTeacher(request,t_id):
     messages.success(request,"Approved Teacher")
     return redirect("viewTeachers")
 
+def removeTeacher(request,t_id):
+    teacher = User.objects.get(id = t_id)
+    teacher.delete()
+    messages.success(request,"Removed Teacher")
+    return redirect("viewTeachers")
+
 
 def viewAddedNews(request):
     news = NewsAndInfo.objects.all()

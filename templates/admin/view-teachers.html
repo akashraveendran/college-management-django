@@ -24,9 +24,8 @@
                 <h3 class="mt-5"> Teachers List</h3>
             </div>
             <div class="row gx-lg-0 gy-4">
-                <div class="col-lg-1">
-                </div>
-                <div class="col-lg-10">
+
+                <div class="col-lg-12">
                     <table class="table">
                         <thead>
                             <tr>
@@ -46,10 +45,13 @@
                                 <td>{{t.Designation}}</td>
                                 <td>{{t.Phone_Number}}</td>
                                 <td>{{t.user.email}}</td>
-                                {% if t.user.is_active != True %}
-                                <td><a href="{% url 'approveTeacher' t.user.id %}" class="btn btn-success">Approve</a>
+                                <td>
+                                    {% if t.user.is_active != True %}
+                                    <a href="{% url 'approveTeacher' t.user.id %}" class="btn btn-success">Approve</a>
+                                    {% endif %}
+                                    <a href="{% url 'removeTeacher' t.user.id %}" class="btn btn-danger m-2"
+                                        onclick="return confirm('Confirm removing this teacher ?')">Remove</a>
                                 </td>
-                                {% endif %}
                             </tr>
                             {% endfor %}
 
